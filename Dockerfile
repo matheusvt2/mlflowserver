@@ -2,7 +2,7 @@ FROM python:3.7.9-slim
 
 LABEL maintainer="Matheus Torres <matheusvt@gmail.com>"
 
-ARG MLFLOW_VERSION=1.11.0
+ARG MLFLOW_VERSION=1.12.1
 
 RUN mkdir -p /mlflow/ \
   && apt-get update && apt-get -y install --no-install-recommends default-libmysqlclient-dev libpq-dev build-essential 
@@ -14,6 +14,7 @@ WORKDIR /mlflow/
 USER mlflow
 
 ENV PATH="/mlflow/.local/bin:$PATH"
+ENV PATH="/root/.local/bin:$PATH"
 ENV BACKEND_URI /mlflow/store
 ENV ARTIFACT_ROOT /mlflow/mlflow-artifacts
 ENV MLFLOW_PORT 5000
