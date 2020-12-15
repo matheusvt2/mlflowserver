@@ -8,9 +8,14 @@ RUN mkdir -p /mlflow/ \
   && apt-get update && apt-get -y install --no-install-recommends default-libmysqlclient-dev libpq-dev build-essential 
 
 RUN useradd -m -d /mlflow mlflow
-RUN chown -R mlflow:mlflow /mlflow
-WORKDIR /mlflow/
 
+ENV ARTIFACT_ROOT /mlflow/mlflow-artifacts
+ENV BACKEND_URI /mlflow/store
+
+RUN mkdir -p /mlflow/${ARTIFACT_ROOT}
+RUN chown -R mlflow:mlflow /mlflow
+
+WORKDIR /mlflow/
 USER mlflow
 
 ENV PATH="/mlflow/.local/bin:$PATH"
