@@ -2,7 +2,7 @@ FROM python:3.7.9-slim
 
 LABEL maintainer="Matheus Torres <matheusvt@gmail.com>"
 
-ARG MLFLOW_VERSION=1.14.1
+ARG MLFLOW_VERSION=1.13.1
 
 RUN mkdir -p /mlflow/ \
   && apt-get update && apt-get -y install --no-install-recommends default-libmysqlclient-dev libpq-dev build-essential 
